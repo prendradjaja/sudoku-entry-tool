@@ -6,7 +6,7 @@ const aoeuidhtn = 'aoeuidhtn';
 
 function main() {
   renderSelection();
-  renderPuzzleString();
+  renderPlayLink();
   document.addEventListener('keydown', onKeyDown);
 }
 
@@ -20,36 +20,44 @@ function renderSelection() {
   getSelectedCell().classList.add('selected');
 }
 
-function renderPuzzleString() {
-  const result = Array.from($$('.cell')).map(cell => +(cell.innerHTML ?? 0)).join('');
-  $('#puzzlestring').innerHTML = result;
+function renderPlayLink() {
+  const puzzleString = Array.from($$('.cell')).map(cell => +(cell.innerHTML ?? 0)).join('');
+  const url = 'https://sudokuexchange.com/play/?s=' + puzzleString;
+  $('a#play').href = url;
+  $('a#play').innerHTML = url;
 }
 
 function onKeyDown(keyboardEvent) {
-  const { key } = keyboardEvent;
-  if (Array.from(aoeuidhtn).includes(key)) {
+  const { key, ctrlKey } = keyboardEvent;
+  if (Array.from(aoeuidhtn).includes(key) && ctrlKey === false) {
     const number = aoeuidhtn.indexOf(key) + 1;
     getSelectedCell().innerHTML = number.toString();
     advanceSelection();
   } else if (key === ' ') {
     advanceSelection();
-  } else if (key === 'j') {
+  } else if (key === 'j' || key === 'ArrowDown') {
     moveSelectionDown();
-  } else if (key === 'k') {
+  } else if (key === 'k' || key === 'ArrowUp') {
     moveSelectionUp();
-  } else if (key === 'g') {
+  } else if (key === 'g' || key === 'ArrowLeft') {
     moveSelectionLeft();
-  } else if (key === 'l') {
+  } else if (key === 'l' || key === 'ArrowRight') {
     moveSelectionRight();
-  } else if (key === 'm' && keyboardEvent.ctrlKey === true) {
+  } else if (
+    key === 'Enter' ||
+    (key === 'm' && ctrlKey === true)
+  ) {
     selected.c = 0;
     moveSelectionDown();
-  } else if (key === 'Backspace') {
+  } else if (
+    key === 'Backspace' ||
+    (key === 'h' && ctrlKey === true)
+  ) {
     unadvanceSelection();
     getSelectedCell().innerHTML = '';
   }
   renderSelection();
-  renderPuzzleString();
+  renderPlayLink();
 }
 
 function moveSelectionLeft() {

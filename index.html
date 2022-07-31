@@ -1,0 +1,53 @@
+<style>
+#grid {
+  display: grid;
+  grid-template-columns: repeat(9, 100px);
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  width: fit-content;
+}
+
+.cell {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  font-size: 80px;
+  font-family: sans-serif;
+  text-align: center;
+  line-height: 100px;
+}
+
+.cell:nth-child(3n+3) {
+  border-right-width: 2px;
+}
+
+.cell:nth-child(27n-8),
+.cell:nth-child(27n-7),
+.cell:nth-child(27n-6),
+.cell:nth-child(27n-5),
+.cell:nth-child(27n-4),
+.cell:nth-child(27n-3),
+.cell:nth-child(27n-2),
+.cell:nth-child(27n-1),
+.cell:nth-child(27n) {
+  border-bottom-width: 2px;
+}
+
+.cell.selected {
+  background: hsl(220, 80%, 85%);
+}
+
+#puzzlestring {
+  font-size: 20px;
+}
+</style>
+
+<div id="grid">
+  <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+</div>
+
+<pre id="puzzlestring"></pre>
+
+<script src="./main.js"></script>

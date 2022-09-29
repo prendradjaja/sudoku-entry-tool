@@ -22,7 +22,7 @@ function renderSelection() {
 
 function renderPlayLink() {
   const puzzleString = Array.from($$('.cell')).map(cell => +(cell.innerHTML ?? 0)).join('');
-  const url = 'https://sudokuexchange.com/play/?s=' + puzzleString;
+  const url = 'https://cheery-custard-2b36de.netlify.app/?s=' + puzzleString;
   $('a#play').href = url;
   $('a#play').innerHTML = url;
 }
